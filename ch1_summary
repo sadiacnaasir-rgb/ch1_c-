@@ -1,0 +1,35 @@
+1. OBJECTS
+An object is a part of a program It has data and it can do actions
+Data in an object-properties 
+Actions an object can do- methods
+  : WHY
+Programs use objects to do specific tasks
+It breaks a big program into small parts
+Most languages use object-oriented programming (OOP)
+  : TYPES
+Visible objects : controls  Label, Button, TextBox
+Invisible objects : Timer, OpenFileDialog
+Class = code that describes a type of object
+  
+    2. Forms and Controls
+ What
+Form = the window of your app. Form1 is created automatically and is empty
+Properties = settings for how an object looks and behaves left = name, right = value
+     = Why
+Properties control the appearance. Example: Text changes the title bar 
+     =Types 
+Add a control: double-click it in the Toolbox, or drag it to the form
+Change it: resize sizing handles edit properties
+Delete it: select it, press the Delete key
+Naming rules (identifiers): start with a letter or then letters, digits or  no spaces
+
+  3. Introduction to C# Code
+1. What
+C# code is organized in three levels: namespace , class ,method
+Event-driven = the program waits for a user action (event), then responds
+2. Why
+Organization keeps code clear. Event handlers make the app react to clicks, keys and mouse
+3. Types
+Namespace: container that holds classes
+Class: container that holds methods
+Method: group of statements that do an operation
