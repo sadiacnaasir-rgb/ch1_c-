@@ -1,0 +1,311 @@
+import java.util.Date;
+
+public class Loan {
+
+    private double annualInterestRate;
+    private int numberOfYears;
+    private double loanAmount;
+    private Date loanDate;
+
+    // No-argument constructor
+    public Loan() {
+        this(2.5, 1, 1000);
+    }
+
+    // Constructor
+    public Loan(double annualInterestRate, int numberOfYears,
+                double loanAmount) {
+        this.annualInterestRate = annualInterestRate;
+        this.numberOfYears = numberOfYears;
+        this.loanAmount = loanAmount;
+        this.loanDate = new Date();
+    }
+
+    public double getAnnualInterestRate() {
+        return annualInterestRate;
+    }
+
+    public void setAnnualInterestRate(double annualInterestRate) {
+        this.annualInterestRate = annualInterestRate;
+    }
+
+    public int getNumberOfYears() {
+        return numberOfYears;
+    }
+
+    public void setNumberOfYears(int numberOfYears) {
+        this.numberOfYears = numberOfYears;
+    }
+
+    public double getLoanAmount() {
+        return loanAmount;
+    }
+
+    public void setLoanAmount(double loanAmount) {
+        this.loanAmount = loanAmount;
+    }
+
+    public Date getLoanDate() {
+        return loanDate;
+    }
+
+    public double getMonthlyPayment() {
+        double monthlyRate = annualInterestRate / 100 / 12;
+        int months = numberOfYears * 12;
+
+        return loanAmount * monthlyRate /
+                (1 - Math.pow(1 + monthlyRate, -months));
+    }
+
+    public double getTotalPayment() {
+        return getMonthlyPayment() * numberOfYears * 12;
+    }
+
+
+    // MAIN METHOD TO TEST LOAN
+    public static void main(String[] args) {
+
+        Loan loan = new Loan();
+
+        System.out.println("Interest Rate: "
+                + loan.getAnnualInterestRate());
+
+        System.out.println("Years: "
+                + loan.getNumberOfYears());
+
+        System.out.println("Amount: "
+                + loan.getLoanAmount());
+
+        System.out.println("Date: "
+                + loan.getLoanDate());
+
+        System.out.println("Monthly Payment: "
+                + loan.getMonthlyPayment());
+
+        System.out.println("Total Payment: "
+                + loan.getTotalPayment());
+
+        // Test setters
+        loan.setAnnualInterestRate(5);
+        loan.setNumberOfYears(5);
+        loan.setLoanAmount(5000);
+
+        System.out.println("\nAfter setters:");
+
+        System.out.println(loan.getAnnualInterestRate());
+        System.out.println(loan.getNumberOfYears());
+        System.out.println(loan.getLoanAmount());
+    }
+}
+.......
+public class BMI {
+
+    private String name;
+    private int age;
+    private double weight;
+    private double height;
+
+    // Constructor with age
+    public BMI(String name, int age, double weight, double height) {
+        this.name = name;
+        this.age = age;
+        this.weight = weight;
+        this.height = height;
+    }
+
+    // Constructor without age
+    public BMI(String name, double weight, double height) {
+        this(name, 20, weight, height);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public double getBMI() {
+        return (weight * 703) / (height * height);
+    }
+
+    public String getStatus() {
+
+        double bmi = getBMI();
+
+        if (bmi < 18.5)
+            return "Underweight";
+
+        else if (bmi < 25)
+            return "Normal";
+
+        else if (bmi < 30)
+            return "Overweight";
+
+        else
+            return "Obese";
+    }
+
+
+    // MAIN METHOD TO TEST BMI
+    public static void main(String[] args) {
+
+        // Test first constructor
+        BMI person1 = new BMI(
+                "Nimca", 21, 130, 65);
+
+        System.out.println("Name: "
+                + person1.getName());
+
+        System.out.println("Age: "
+                + person1.getAge());
+
+        System.out.println("Weight: "
+                + person1.getWeight());
+
+        System.out.println("Height: "
+                + person1.getHeight());
+
+        System.out.println("BMI: "
+                + person1.getBMI());
+
+        System.out.println("Status: "
+                + person1.getStatus());
+
+
+        // Test second constructor
+        BMI person2 = new BMI(
+                "Ali", 180, 70);
+
+        System.out.println("\nSecond constructor:");
+
+        System.out.println("Name: "
+                + person2.getName());
+
+        System.out.println("Age: "
+                + person2.getAge());
+
+        System.out.println("BMI: "
+                + person2.getBMI());
+
+        System.out.println("Status: "
+                + person2.getStatus());
+    }
+}
+....
+public class Course {
+
+    private String courseName;
+    private String[] students;
+    private int numberOfStudents;
+
+    // Constructor
+    public Course(String courseName) {
+        this.courseName = courseName;
+        students = new String[10];
+        numberOfStudents = 0;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void addStudent(String student) {
+
+        if (numberOfStudents == students.length) {
+
+            String[] newStudents =
+                    new String[students.length * 2];
+
+            for (int i = 0; i < students.length; i++) {
+                newStudents[i] = students[i];
+            }
+
+            students = newStudents;
+        }
+
+        students[numberOfStudents] = student;
+        numberOfStudents++;
+    }
+
+    public void dropStudent(String student) {
+
+        for (int i = 0; i < numberOfStudents; i++) {
+
+            if (students[i].equals(student)) {
+
+                for (int j = i; j < numberOfStudents - 1; j++) {
+                    students[j] = students[j + 1];
+                }
+
+                students[numberOfStudents - 1] = null;
+                numberOfStudents--;
+
+                return;
+            }
+        }
+    }
+
+    public String[] getStudents() {
+        return students;
+    }
+
+    public int getNumberOfStudents() {
+        return numberOfStudents;
+    }
+
+
+    // MAIN METHOD TO TEST COURSE
+    public static void main(String[] args) {
+
+        Course course =
+                new Course("Java Programming");
+
+        System.out.println("Course: "
+                + course.getCourseName());
+
+
+        // Test addStudent()
+        course.addStudent("Nimca");
+        course.addStudent("Ali");
+        course.addStudent("Ahmed");
+
+        System.out.println("\nNumber of students: "
+                + course.getNumberOfStudents());
+
+
+        // Test getStudents()
+        System.out.println("\nStudents:");
+
+        for (int i = 0;
+             i < course.getNumberOfStudents();
+             i++) {
+
+            System.out.println(
+                    course.getStudents()[i]);
+        }
+
+
+        // Test dropStudent()
+        course.dropStudent("Ali");
+
+        System.out.println("\nAfter dropping Ali:");
+
+        for (int i = 0;
+             i < course.getNumberOfStudents();
+             i++) {
+
+            System.out.println(
+                    course.getStudents()[i]);
+        }
+    }
+}
