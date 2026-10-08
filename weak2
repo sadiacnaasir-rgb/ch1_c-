@@ -1,0 +1,29 @@
+(TextBox Controls)
+The TextBox control allows users to input text or data via the keyboard. Data retrieved from a TextBox is stored in its Text property as a string.
+2. Variables and Data Types
+A variable is a named memory location used to store data. In C#, you must declare a variable's data type before using it.
+Primitive Data Types:
+string: Stores text or sequences of characters.
+int: Stores whole numbers (integers).
+double: Stores floating-point numbers with standard precision.
+decimal: Stores monetary and financial values with high precision.
+bool: Stores logical boolean values (true or false).
+. String Concatenation & Formatting
+The simplest way to join strings or combine text with numbers is using the + operator. You can also format numeric output using the .ToString() method.
+7. Constants and Fields
+Constants: Variables declared with the const keyword whose values cannot be modified during program execution.
+Fields: Variables declared at the class level, making them accessible to all methods within that class
+public partial class Form1 : Form
+{
+    // Class-level Field
+    private string currentUserName;
+
+    // Named Constant
+    const double TAX_RATE = 0.05;
+
+    private void calculateButton_Click(object sender, EventArgs e)
+    {
+        double price = 100.0;
+        double totalTax = price * TAX_RATE;
+    }
+}
